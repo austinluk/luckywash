@@ -1,26 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Glacier Colors */
+  --color-glacier-50: #f0f9ff;
+  --color-glacier-100: #e0f2fe;
+  --color-glacier-200: #bae6fd;
+  --color-glacier-300: #7dd3fc;
+  --color-glacier-400: #38bdf8;
+  --color-glacier-500: #0ea5e9;
+  --color-glacier-600: #0284c7;
+  --color-glacier-700: #0369a1;
+  --color-glacier-800: #075985;
+  --color-glacier-900: #0c4a6e;
+
+  /* Brand Colors from Design Spec */
+  --color-primary: #396477;
+  --color-secondary: #006686;
+  --color-surface: #f7f9fb;
+  --color-surface-dim: #d8dadc;
+  --color-primary-container: #bae6fd;
+  --color-secondary-container: #7ed4fd;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-surface text-[#191c1e] font-sans antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.hero-img-mask {
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+
+@media (max-width: 768px) {
+  .hero-img-mask {
+    clip-path: none;
+  }
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
